@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Recipe } from './recipes/recipe.model';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  status: number = 0; // 0 means recipes, 1 means shopping list
+  status: number = 0; // 0 means recipes, 1 means shopping list  selectedR: Recipe;
 
   onSelectedRecipes()   {
     console.log("recipes app!");
