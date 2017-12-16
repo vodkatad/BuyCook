@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-
+import { Component, OnInit} from '@angular/core';
+import { RecipeService } from '../../services/recipe.service';
 import { Recipe } from '../recipe.model';
 
 @Component({
@@ -8,21 +8,13 @@ import { Recipe } from '../recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent implements OnInit {
-  @Output() selectedRecipe = new EventEmitter<Recipe>();
+  private recipes : Recipe[];
 
-  recipes: Recipe[] = [
-    new Recipe("Chicken Tikka","spicy chicken!","https://upload.wikimedia.org/wikipedia/commons/4/44/Chicken_Tikka_Masala_KellySue.JPG"),
-    new Recipe("Chicken Tikka2","less spicy","https://upload.wikimedia.org/wikipedia/commons/4/44/Chicken_Tikka_Masala_KellySue.JPG")
-  ];
-
-  constructor() { }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-  }
-  
-  onSelectedRecipe(r: Recipe) {
-      console.log("selected recipe " + r.name);
-      this.selectedRecipe.emit(r);
+    this.recipes = this.recipeService.getRecipes();
   }
 
+  // the a out of the recipe-itm is bad cause I cannot listen to the click event on the whole block. It was easier before with the event bubbling.
 }
