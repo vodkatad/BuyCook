@@ -1,14 +1,9 @@
-<app-header (selectedRecipes)="onSelectedRecipes()" (selectedShoppingList)="onSelectedShoppingList()"></app-header>
+<app-header></app-header>
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             Seems to work.
         </div>
     </div>
-<div *ngIf="status === 0; else sl">
-    <app-recipes></app-recipes>
-</div>
-<ng-template #sl>
-    <app-shopping-list></app-shopping-list>
-</ng-template>
-</div>
+
+<router-outlet></router-outlet>
