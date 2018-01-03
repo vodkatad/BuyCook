@@ -27,6 +27,10 @@ export class RecipeService {
         return this.recipes.slice(); // to avoid changing from outside out recipes stored here
     }
 
+    getRecipe(id: number): Recipe {
+        return this.recipes[id];
+    }
+    
     addIngredients(recipe: Recipe) {
         /*for (let i of recipe.ingredients) {
             this.shoppingListService.addIngredient(i);

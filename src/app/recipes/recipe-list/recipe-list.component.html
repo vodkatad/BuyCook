@@ -1,13 +1,13 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
+        <button class="btn btn-success" [routerLink]="['./new']">New Recipe</button>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-xs-12">
-        <a href="#" class="list-group-item clearfix" *ngFor="let r of recipes">
-            <app-recipe-itm [recipe]="r"></app-recipe-itm>    
+        <a style="cursor: pointer" routerLinkActive="active" class="list-group-item clearfix"  *ngFor="let r of recipes; let i = index">
+            <app-recipe-itm [recipe]="r" [routerLink]="['/recipes',i]"></app-recipe-itm>    
         </a>
     </div>
 </div>

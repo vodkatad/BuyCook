@@ -6,10 +6,20 @@ import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component
 import { RecipeItmComponent } from './recipes/recipe-list/recipe-itm/recipe-itm.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes/recipes/recipes.component';
+import { RecipeFillerinoComponent } from './recipes/recipe-fillerino/recipe-fillerino.component';
+import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+
 
 const appRoutes: Routes = [
     { path: '', redirectTo: '/recipes', pathMatch: 'full'},
-    { path: 'recipes', component: RecipesComponent},
+    { path: 'recipes', component: RecipesComponent,
+        children: [ 
+                    { path: '', component: RecipeFillerinoComponent},
+                    { path: 'new', component: RecipeEditComponent },
+                    { path: ':id', component: RecipeDetailComponent},
+                    { path: ':id/edit', component: RecipeEditComponent },
+        ]
+    },
     { path: 'shoppinglist', component: ShoppingListComponent}
 ];
 
