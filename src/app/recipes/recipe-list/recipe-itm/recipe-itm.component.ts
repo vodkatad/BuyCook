@@ -16,7 +16,4 @@ export class RecipeItmComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelected() {
-    this.router.navigate([':0'], {relativeTo: this.route, queryParamsHandling: 'preserve'});
-  }
 } 

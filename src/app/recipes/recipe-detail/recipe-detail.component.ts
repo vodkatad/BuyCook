@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Recipe } from '../recipe.model';
 import { Ingredient } from '../../shared/ingredient.model';
 import { RecipeService } from '../../services/recipe.service';
@@ -14,7 +14,7 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe;
   id: number;
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) { }
+  constructor(private recipeService: RecipeService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
       //this.recipe = this.recipeService.getRecipe(this.route.snapshot.params['id']);
@@ -29,4 +29,9 @@ export class RecipeDetailComponent implements OnInit {
     this.recipeService.addIngredients(this.recipe);
   }
 
+
+  onDelete() {
+    this.recipeService.deleteRecipe(this.id);
+    this.router.navigate(['/recipes']);
+  }
 }

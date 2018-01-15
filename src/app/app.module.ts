@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
@@ -12,7 +13,8 @@ import { RecipeItmComponent } from './recipes/recipe-list/recipe-itm/recipe-itm.
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipesComponent } from './recipes/recipes/recipes.component';
 import { DropdownDirective } from './shared/dropdown.directive';
-import { ShoppingListService} from './services/shopping-list.service';
+import { ShoppingListService } from './services/shopping-list.service';
+import { RecipeService } from './services/recipe.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeFillerinoComponent } from './recipes/recipe-fillerino/recipe-fillerino.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
@@ -29,14 +31,16 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     RecipesComponent,
     DropdownDirective,
     RecipeFillerinoComponent,
-    RecipeEditComponent
+    RecipeEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [ ShoppingListService ],
+  providers: [ ShoppingListService, RecipeService ],
   
   bootstrap: [AppComponent]
 })
